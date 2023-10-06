@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Register = () => {
-  const{googleSignIn,gitHubSignIn,faceBookSignIn}=useContext(AuthContext)
+  const{googleSignIn,gitHubSignIn,faceBookSignIn,signUp}=useContext(AuthContext)
+  
   const handleGoogle=()=>{
     googleSignIn()
     .then(result=>{
@@ -33,6 +34,10 @@ const Register = () => {
     const email =e.target.email.value
     const password = e.target.password.value
     console.log(name, photo, email, password)
+    signUp( email, password,name,photo)
+    .then(result =>console.log(result.user))
+    .then(error=>console.error(error))
+    
   }
     return (
       
@@ -75,7 +80,7 @@ const Register = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Register Now</button>
         </div>
       </form>
       <div>

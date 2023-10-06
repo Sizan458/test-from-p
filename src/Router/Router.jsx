@@ -3,6 +3,7 @@ import NavBar from "../component/NavBar/NavBar";
 import Register from "../component/Register/Register";
 import Login from "../component/Login/Login";
 import DashBoard from "../component/DashBoard/DashBoard";
+import PrivateRouter from "../component/PrivateRoute/PrivateRouter";
 
 
 
@@ -17,7 +18,9 @@ const Router =  createBrowserRouter([
         children:[
            {
             path:"/dashboard",
-             element:<DashBoard></DashBoard>
+             element:<PrivateRouter>
+              <DashBoard></DashBoard>
+             </PrivateRouter>
            },
            {
              path:"/register",
